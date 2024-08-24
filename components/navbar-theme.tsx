@@ -24,7 +24,7 @@ const NavBarTheme = () => {
     };
 
     return (
-        <label className="btn btn-ghost hover:bg-transparent hover:text-primary swap swap-rotate">
+        <label className="btn btn-ghost btn-circle swap swap-rotate">
             <input
                 type="checkbox"
                 className="theme-controller"
