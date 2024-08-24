@@ -1,26 +1,33 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import { inter } from "@/styles/fonts";
 
+import { koho } from "@/styles/fonts";
 import "@/styles/globals.css";
+
+import NavBar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
     title: "AtiCommunity",
     description: "AtiCommunity project showcase",
 };
 
-type RootLayoutProps = {
+type LayoutProps = {
     children: React.ReactNode;
 };
 
-const RootLayout = ({ children }: RootLayoutProps) => {
-    const theme = cookies().get("theme")?.value || "light";
+const Layout = ({ children }: LayoutProps) => {
+    const theme = cookies().get("theme")?.value || "bumblebee";
 
     return (
         <html data-theme={theme} lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={`${koho.className}`}>
+                <NavBar />
+                {children}
+                <Footer />
+            </body>
         </html>
     );
 };
 
-export default RootLayout;
+export default Layout;

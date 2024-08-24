@@ -1,35 +1,16 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
-import NavBar from "@/components/Navbar/navbar";
-import Footer from "@/components/Footer/footer";
-import Content from "@/components/Content/content";
+import GetStarted from "@/components/getstarted";
+import ProfileCard from "@/components/profilecard";
 
 const Home = () => {
-    const [theme, setTheme] = useState<string>("light");
-
-    useEffect(() => {
-        const savedTheme =
-            document.cookie.replace(/theme=(.*)/, "$1") || "light";
-        setTheme(savedTheme);
-        document.documentElement.setAttribute("data-theme", savedTheme);
-    }, []);
-
-    const toggleTheme = () => {
-        const newTheme = theme === "light" ? "dark" : "light";
-        setTheme(newTheme);
-        document.cookie = `theme=${newTheme}; max-age=${
-            30 * 24 * 60 * 60
-        }; path=/`;
-        document.documentElement.setAttribute("data-theme", newTheme);
-    };
-
     return (
         <>
-            <NavBar theme={theme} toggleTheme={toggleTheme} />
-            <Content />
-            <Footer />
+            <div className="min-h-screen max-w-screen bg-base-200 content-center">
+                <div className="flex flex-col lg:flex-row">
+                    <GetStarted />
+                    <div className="divider lg:divider-horizontal"></div>
+                    <ProfileCard />
+                </div>
+            </div>
         </>
     );
 };
